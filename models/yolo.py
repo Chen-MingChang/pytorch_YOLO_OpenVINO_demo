@@ -42,7 +42,7 @@ class Detect(nn.Module):
         self.training |= self.export
         for i in range(self.nl):
 #########################################################
-# comment out only if yolov4, (scale-yolov4 and yolov5 do not need)
+# comment out only if yolov4, (scaled-yolov4 and yolov5 do not need)
             x[i] = self.m[i](x[i])  # conv
 #########################################################
             bs, _, ny, nx = x[i].shape  # x(bs,255,20,20) to x(bs,3,20,20,85)
