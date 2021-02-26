@@ -14,20 +14,24 @@ The following components are required.
 ###	Download Pytorch Weights 
 
 About YOLOV3
+
 This document uses a darknet YOLOV3 model, because the author has not found a public pytorch version.
 https://github.com/zldrobit/onnx_tflite_yolov3
 
 About YOLOV4
+
 Taken from the repository released by one of the authors of YOLOV4, KinYiu Wong.
 https://github.com/WongKinYiu/PyTorch_YOLOv4/tree/u3_preview
 There are two kind of models in the repository; all the activation of  convolutional layer of yolov4-pacsp uses leaky, and yolov4-pacsp-mish uses mish at activation.
 
 About Scaled-YOLOV4
+
 Taken from the repository released by one of the authors of Scaled-YOLOV4, KinYiu Wong.
 https://github.com/WongKinYiu/ScaledYOLOv4/tree/yolov4-large#installation
 There are three models (p5, p6, p7)with different backbone.
 
 About YOLOV5
+
 There are Four tag in YOLOv5 repository so far. And YOLOv5 includes YOLOv5s, YOLOv5m, YOLOv5l and YOLOv5x due to different backbone. Here we use models from tag v4.0 for inference. 
 https://github.com/ultralytics/yolov5
 
