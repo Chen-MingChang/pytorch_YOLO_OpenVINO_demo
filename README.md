@@ -28,7 +28,7 @@ https://github.com/WongKinYiu/ScaledYOLOv4/tree/yolov4-large#installation
 There are three scaled models (p5, p6, p7) with different backbone.
 
 **About YOLOV5**  
-There are Four tag in YOLOv5 repository so far. And YOLOv5 includes YOLOv5s, YOLOv5m, YOLOv5l and YOLOv5x due to different backbone. Here we use models from tag v4.0 for inference.  
+There are four tag in YOLOv5 repository so far. And YOLOv5 includes YOLOv5s, YOLOv5m, YOLOv5l and YOLOv5x due to different backbone. Here we use models from tag v4.0 for inference.  
 https://github.com/ultralytics/yolov5
 
 | Model | Test Size | weights |
@@ -48,3 +48,16 @@ https://github.com/ultralytics/yolov5
 | **YOLOv5l** | 640 | [weights](https://github.com/ultralytics/yolov5/releases/download/v4.0/yolov5l.pt) |
 | **YOLOv5x** | 640 | [weights](https://github.com/ultralytics/yolov5/releases/download/v4.0/yolov5x.pt) |
 
+###	Convert Pytorch Weights to ONNX Weights 
+
+In YOLOV3, you can following https://github.com/zldrobit/onnx_tflite_yolov3 to convert model to onnx.
+
+The repository provides a script models/export.py to export Pytorch weights with extensions *.pt to ONNX weights with extensions *.onnx.
+YOLOV4, Scaled-YOLOV4, YOLOV5 can apply this method. 
+Here take yolov5s (default) as an example, run the following command:
+
+```
+$ python models/export.py  --weights yolov5s.pt  --img-size 640
+```
+
+Then we can get yolov5s.onnx.
