@@ -79,8 +79,8 @@ and there are two at line.42-line.45 and line.80-line.83 in **models/common.py**
 # if yolov5
         self.act = nn.LeakyReLU(0.1, inplace=True)
 ```
-
-The second step is to run **models/export.py** to generate *.onnx* file.
+  
+The second step is to run **models/export.py** to generate *.onnx* file.  
 Here take yolov5s.pt (default) as an example, run the following command:
 
 ```
