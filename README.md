@@ -6,6 +6,7 @@ Windows 10 and Ubuntu 18.04 are validated to use. (Scaled-YOLO-V4 is only availa
 ## Convert Weights to ONNX File
 The following components are required.
 -	OpenVINO 2021.2
+-	Python >=  3.6
 -	ONNX >= 1.8.0
 -	Pytorch >= 1.7.0
 -	Netron 4.4.3
@@ -54,6 +55,32 @@ If YOLOV3, you can following https://github.com/zldrobit/onnx_tflite_yolov3 to c
 
 The repository provides a script models/export.py to export Pytorch weights with extensions *.pt to ONNX weights with extensions *.onnx.  
 YOLOV4, Scaled-YOLOV4, YOLOV5 can apply this method.  
+
+First step is to edit **models/yolo.py** and **models/common.py** according to the model to be converted.  
+There is one part that needs to be edited at line.46 in **models/yolo.py**,  
+
+```
+# comment out only if yolov4, (scaled-yolov4 and yolov5 do not need)
+            x[i] = self.m[i](x[i])  # conv
+```
+
+and there are two at line.42-line.45 and line.80-line.83 in **models/common.py**.  
+
+```
+# if yolov4
+        #self.act = Mish() if act else nn.Identity()
+# if yolov5
+        self.act = nn.SiLU() if act is True else (act if isinstance(act, nn.Module) else nn.Identity())
+```
+
+```
+# if yolov4
+        #self.act = Mish()
+# if yolov5
+        self.act = nn.LeakyReLU(0.1, inplace=True)
+```
+
+The second step is to run **models/export.py** to generate *.onnx* file.
 Here take yolov5s.pt (default) as an example, run the following command:
 
 ```
