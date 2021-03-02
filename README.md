@@ -53,7 +53,7 @@ https://github.com/ultralytics/yolov5
 
 If YOLOV3: You can following https://github.com/zldrobit/onnx_tflite_yolov3 to convert model to onnx.
 
-If YOLOV4 / Scaled-YOLOV4 / YOLOV5: 
+If YOLOV4 / Scaled-YOLOV4 / YOLOV5:  
 The repository provides a script **models/export.py** to export Pytorch weights with extensions *.pt to ONNX weights with extensions *.onnx.  
 
 First step is to edit **models/yolo.py** and **models/common.py** according to the model to be converted.  
