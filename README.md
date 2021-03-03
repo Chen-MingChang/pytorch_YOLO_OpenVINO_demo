@@ -55,7 +55,6 @@ If YOLOV3: You can following https://github.com/zldrobit/onnx_tflite_yolov3 to c
 
 If YOLOV4 / Scaled-YOLOV4 / YOLOV5:  
 The repository provides a script **models/export.py** to export Pytorch weights with extensions *.pt to ONNX weights with extensions *.onnx.  
-
 Intall mish-cuda if you want to convert Scaled-YOLOV4.  
 
 ```
