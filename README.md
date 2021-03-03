@@ -56,7 +56,28 @@ If YOLOV3: You can following https://github.com/zldrobit/onnx_tflite_yolov3 to c
 If YOLOV4 / Scaled-YOLOV4 / YOLOV5:  
 The repository provides a script **models/export.py** to export Pytorch weights with extensions *.pt to ONNX weights with extensions *.onnx.  
 
-First step is to edit **models/yolo.py** and **models/common.py** according to the model to be converted.  
+Intall mish-cuda if you want to convert Scaled-YOLOV4.  
+
+```
+git clone https://github.com/thomasbrandon/mish-cuda mc
+cd mc
+
+# change all of name which is mish_cuda to mish_mish and build.
+# 1. mc/src/mish_cuda -> mc/src/mish_mish
+# 2. mc/csrc/mish_cuda.cpp -> mc/csrc/mish_mish.cpp
+# 3. in mc/setup.py
+#   3.1 line 5 -> 'csrc/mish_mish.cpp'
+#   3.2 line 11 -> name='mish_mish'
+#   3.3 line 20 -> 'mish_mish._C'
+
+python setup.py build
+# rename mc/build/lib.xxx folder to mc/build/lib
+
+# modify import in models/common.py
+# line 7 -> from mc.build.lib.mish_mish import MishCuda as Mish
+```
+
+Next, edit **models/yolo.py** and **models/common.py** according to the model to be converted.  
 There is one part that needs to be edited at line.46 in **models/yolo.py**,  
 
 ```
@@ -80,7 +101,7 @@ and there are two at line.42-line.45 and line.80-line.83 in **models/common.py**
         self.act = nn.LeakyReLU(0.1, inplace=True)
 ```
 
-The second step is to run **models/export.py** to generate *.onnx* file.  
+At last, run **models/export.py** to generate *.onnx* file.  
 Here take yolov5s.pt (default) as an example, run the following command:
 
 ```
