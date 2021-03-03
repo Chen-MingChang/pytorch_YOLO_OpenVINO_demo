@@ -72,9 +72,6 @@ cd mc
 
 python setup.py build
 # rename mc/build/lib.xxx folder to mc/build/lib
-
-# modify import in models/common.py
-# line 7 -> from mc.build.lib.mish_mish import MishCuda as Mish
 ```
 
 Next, edit **models/yolo.py** and **models/common.py** according to the model to be converted.  
