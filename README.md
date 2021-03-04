@@ -109,7 +109,8 @@ Then we can get yolov5s.onnx.
 
 
 ##	Convert ONNX File to IR File
-After we get ONNX weights file from the last section, we can convert it to IR file with model optimizer. (refer to https://github.com/violet17/yolov5_demo)  
+After we get ONNX weights file from the last section, we can convert it to IR file with model optimizer.  
+(refer to https://github.com/violet17/yolov5_demo)  
 Run the following script to temporarily set OpenVINO environment and variables:
 
 ```
