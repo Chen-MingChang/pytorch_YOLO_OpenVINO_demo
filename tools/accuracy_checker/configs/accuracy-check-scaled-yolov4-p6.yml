@@ -17,10 +17,10 @@ models:
           anchor_masks: [[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11], [12, 13, 14, 15]]
           raw_output: True
           outputs:
-            - Conv_873
-            - Conv_889
-            - Conv_905
-            - Conv_921
+            - Conv_876
+            - Conv_892
+            - Conv_908
+            - Conv_924
     datasets:
       - name: ms_coco_detection_80_class_without_background
 
