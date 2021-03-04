@@ -118,9 +118,8 @@ $ source /opt/intel/openvino_2021/bin/setupvars.sh
 
 We need to specify the output node of the IR when we use model optimizer to convert the *.onnx* model.
 
-For example, there are 3 output nodes in yolov5s.onnx that obtained in the previous step. We can use Netron to visualize yolov5s.onnx.  
-Then we find the output nodes by searching the keyword “Transpose” in Netron. After that, we can find the convolution node marked as oval shown in following Figure.  
-After double clicking the convolution node, we can read its name “Conv_243”.  
+For example, there are 3 output nodes in yolov5s.onnx that obtained in the previous step. We can use Netron to visualize yolov5s.onnx. Then we find the output nodes by searching the keyword “Transpose” in Netron. After that, we can find the convolution node marked as oval shown in following Figure. After double clicking the convolution node, we can read its name “Conv_243”.  
+
 <img src="https://github.com/violet17/yolov5_demo/blob/main/yolov5_output_node_for_stride_8.png" width="70%">
 
 Similarly, we can find the other two output nodes “Conv_259” and “Conv_275”.  
