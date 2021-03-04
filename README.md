@@ -106,3 +106,28 @@ $ python models/export.py  --weights yolov5s.pt  --img-size 640
 ```
 
 Then we can get yolov5s.onnx.
+
+
+##	Convert ONNX File to IR File
+After we get ONNX weights file from the last section, we can convert it to IR file with model optimizer. 
+Run the following script to temporarily set OpenVINO environment and variables:
+
+```
+$ source /opt/intel/openvino_2021/bin/setupvars.sh
+```
+
+We need to specify the output node of the IR when we use model optimizer to convert the *.onnx* model.
+
+For example, there are 3 output nodes in yolov5s.onnx that obtained in the previous step. We can use Netron to visualize yolov5s.onnx.  
+Then we find the output nodes by searching the keyword “Transpose” in Netron. After that, we can find the convolution node marked as oval shown in following Figure.  
+After double clicking the convolution node, we can read its name “Conv_243”.  
+<img src="https://github.com/violet17/yolov5_demo/blob/main/yolov5_output_node_for_stride_8.png" width="70%">
+
+Similarly, we can find the other two output nodes “Conv_259” and “Conv_275”.  
+
+we can run the following command to generate the IR of YOLOv5 model:
+```
+$ python /opt/intel/openvino_2021.1.110/deployment_tools/model_optimizer/mo.py  --input_model yolov5s.onnx -s 255 --reverse_input_channels --output Conv_243,Conv_259,Conv_275
+```
+
+After that, we can get IR of yolov5s in FP32.  
