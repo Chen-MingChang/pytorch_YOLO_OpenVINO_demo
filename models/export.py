@@ -76,7 +76,7 @@ if __name__ == '__main__':
 
         print('\nStarting ONNX export with onnx %s...' % onnx.__version__)
         f = opt.weights.replace('.pt', '.onnx')  # filename
-        torch.onnx.export(model, img, f, verbose=False, opset_version=10, input_names=['images'],
+        torch.onnx.export(model, img, f, verbose=False, opset_version=12, input_names=['images'],
                           output_names=['output'])
 
         # Checks
