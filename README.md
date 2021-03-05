@@ -235,3 +235,7 @@ https://github.com/DataXujing/ScaledYOLOv4
 YOLOV5  
 https://github.com/ultralytics/yolov5  
 https://github.com/violet17/yolov5_demo  
+
+OpenVINO  
+https://docs.openvinotoolkit.org/  
+https://github.com/openvinotoolkit/open_model_zoo/tree/master/tools/accuracy_checker  
