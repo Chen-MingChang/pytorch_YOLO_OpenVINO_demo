@@ -131,7 +131,10 @@ $ python /opt/intel/openvino_2021.1.110/deployment_tools/model_optimizer/mo.py  
 
 After that, we can get IR of yolov5s in FP32.  
 
+##	OpenVINO Inference Python Demo
 
+After generate IR model, we can use **yolo__openvino_demo.py** for inference.  
+The usage is as follows:  
 
 ```
 usage: yolo__openvino_demo.py [-h] -m MODEL -at
@@ -172,6 +175,11 @@ Options:
   -r, --raw_output_message
                         Optional. Output inference results raw values showing
   --no_show             Optional. Don't show output
-  ```
+```
   
+Here we take yolov5s as an example, you can use the following command to run the demo.
   
+```
+python yolo__openvino_demo.py -m yolov5s.xml -i images/bus.jpg -at yolov5
+```
+
