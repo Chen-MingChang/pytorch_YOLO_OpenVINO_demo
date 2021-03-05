@@ -102,7 +102,7 @@ At last, run **models/export.py** to generate *.onnx* file.
 Here take yolov5s.pt (default) as an example, run the following command:
 
 ```
-$ python models/export.py  --weights yolov5s.pt  --img-size 640
+$ python3 models/export.py  --weights yolov5s.pt  --img-size 640
 ```
 
 Then we can get yolov5s.onnx.
@@ -126,7 +126,7 @@ Similarly, we can find the other two output nodes “Conv_261” and “Conv_277
 
 we can run the following command to generate the IR of YOLOv5 model:
 ```
-$ python /opt/intel/openvino_2021.1.110/deployment_tools/model_optimizer/mo.py  --input_model yolov5s.onnx -s 255 --reverse_input_channels --output Conv_245,Conv_261,Conv_277
+$ python3 /opt/intel/openvino_2021.1.110/deployment_tools/model_optimizer/mo.py  --input_model yolov5s.onnx -s 255 --reverse_input_channels --output Conv_245,Conv_261,Conv_277
 ```
 
 After that, we can get IR of yolov5s in FP32.  
@@ -180,7 +180,7 @@ Options:
 Here we take yolov5s as an example, we can use the following command to run the demo.
   
 ```
-python3 yolo__openvino_demo.py -m yolov5s.xml -i images/bus.jpg -at yolov5
+$ python3 yolo__openvino_demo.py -m yolov5s.xml -i images/bus.jpg -at yolov5
 ```
 <img src="https://github.com/Chen-MingChang/pytorch_YOLO_OpenVINO_demo/blob/main/demo_result.png">
 
@@ -190,32 +190,32 @@ python3 yolo__openvino_demo.py -m yolov5s.xml -i images/bus.jpg -at yolov5
 Follow the guide of [openvinotookit_open_model_zoo](https://github.com/openvinotoolkit/open_model_zoo/tree/master/tools/accuracy_checker).  
 
 ```
-cd /opt/intel/openvino_2021/deployment_tools/open_model_zoo/tools/accuracy_checker   
-sudo apt-get install python3 python3-dev python3-setuptools python3-pip  
-python3 setup.py install
+$ cd /opt/intel/openvino_2021/deployment_tools/open_model_zoo/tools/accuracy_checker   
+$ sudo apt-get install python3 python3-dev python3-setuptools python3-pip  
+$ python3 setup.py install
 ```
 
 ###	Modify
 Copy the contents of **tools/accuracy_checker** to accuracy checker tool path you installed before.  
 
 ```
-cp -r tools/accuracy_checker /opt/intel/openvino_2021/deployment_tools/open_model_zoo/tools/
+$ cp -r tools/accuracy_checker /opt/intel/openvino_2021/deployment_tools/open_model_zoo/tools/
 ```
 
 ###	Download Datasets
 
 ```
-wget http://images.cocodataset.org/zips/val2017.zip  
-wget http://images.cocodataset.org/annotations/annotations_trainval2017.zip  
-unzip -d annotations_trainval2017/ annotations_trainval2017.zip    
-unzip -d annotations_trainval2017/annotations/ val2017.zip  
+$ wget http://images.cocodataset.org/zips/val2017.zip  
+$ wget http://images.cocodataset.org/annotations/annotations_trainval2017.zip  
+$ unzip -d annotations_trainval2017/ annotations_trainval2017.zip    
+$ unzip -d annotations_trainval2017/annotations/ val2017.zip  
 ```
 
 ###	Run Accuracy Checker Tool 
 Same as before, take yolov5s as an example. Use the command below to run accuracy checker.  
 
 ```
-accuracy_check -c tools/accuracy_checker/configs/accuracy-check-yolov5.yml -m . --definitions /opt/intel/openvino_2021/deployment_tools/open_model_zoo/tools/accuracy_checker/dataset_definitions.yml -s annotations_trainval2017/annotations/ -td CPU  
+$ accuracy_check -c tools/accuracy_checker/configs/accuracy-check-yolov5.yml -m . --definitions /opt/intel/openvino_2021/deployment_tools/open_model_zoo/tools/accuracy_checker/dataset_definitions.yml -s annotations_trainval2017/annotations/ -td CPU  
 ```
 
 ##	References
