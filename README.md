@@ -130,3 +130,48 @@ $ python /opt/intel/openvino_2021.1.110/deployment_tools/model_optimizer/mo.py  
 ```
 
 After that, we can get IR of yolov5s in FP32.  
+
+
+
+```
+usage: yolo__openvino_demo.py [-h] -m MODEL -at
+                              {yolov3,yolov4,yolov5,yolov4-p5,yolov4-p6,yolov4-p7}
+                              -i INPUT [-l CPU_EXTENSION] [-d DEVICE]
+                              [--labels LABELS] [-t PROB_THRESHOLD]
+                              [-iout IOU_THRESHOLD] [-ni NUMBER_ITER] [-pc]
+                              [-r] [--no_show]
+
+Options:
+  -h, --help            Show this help message and exit.
+  -m MODEL, --model MODEL
+                        Required. Path to an .xml file with a trained model.
+  -at {yolov3,yolov4,yolov5,yolov4-p5,yolov4-p6,yolov4-p7}, --architecture_type {yolov3,yolov4,yolov5,yolov4-p5,yolov4-p6,yolov4-p7}
+                        Required. Specify model' architecture type.
+  -i INPUT, --input INPUT
+                        Required. Path to an image/video file. (Specify 'cam'
+                        to work with camera)
+  -l CPU_EXTENSION, --cpu_extension CPU_EXTENSION
+                        Optional. Required for CPU custom layers. Absolute
+                        path to a shared library with the kernels
+                        implementations.
+  -d DEVICE, --device DEVICE
+                        Optional. Specify the target device to infer on; CPU,
+                        GPU, FPGA, HDDL or MYRIAD is acceptable. The sample
+                        will look for a suitable plugin for device specified.
+                        Default value is CPU
+  --labels LABELS       Optional. Labels mapping file
+  -t PROB_THRESHOLD, --prob_threshold PROB_THRESHOLD
+                        Optional. Probability threshold for detections
+                        filtering
+  -iout IOU_THRESHOLD, --iou_threshold IOU_THRESHOLD
+                        Optional. Intersection over union threshold for
+                        overlapping detections filtering
+  -ni NUMBER_ITER, --number_iter NUMBER_ITER
+                        Optional. Number of inference iterations
+  -pc, --perf_counts    Optional. Report performance counters
+  -r, --raw_output_message
+                        Optional. Output inference results raw values showing
+  --no_show             Optional. Don't show output
+  ```
+  
+  
