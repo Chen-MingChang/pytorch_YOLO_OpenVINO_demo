@@ -220,17 +220,18 @@ accuracy_check -c tools/accuracy_checker/configs/accuracy-check-yolov5.yml -m . 
 
 ##	References
 
-YOLOV3
+YOLOV3  
 https://github.com/zldrobit/onnx_tflite_yolov3
 
-YOLOV4
+YOLOV4  
 https://github.com/WongKinYiu/PyTorch_YOLOv4/tree/u5_preview
 https://github.com/WongKinYiu/PyTorch_YOLOv4/tree/u5_mish_preview
 
-Scaled-YOLOV4
+Scaled-YOLOV4  
 https://github.com/WongKinYiu/ScaledYOLOv4/tree/yolov4-large#installation
 https://github.com/linghu8812/tensorrt_inference/tree/master/ScaledYOLOv4
 https://github.com/DataXujing/ScaledYOLOv4
 
-YOLOV5
+YOLOV5  
 https://github.com/ultralytics/yolov5
+https://github.com/violet17/yolov5_demo
