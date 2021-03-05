@@ -197,6 +197,7 @@ $ python3 setup.py install
 
 ###	Modify
 Copy the contents of **tools/accuracy_checker** to accuracy checker tool path you installed before.  
+
 Added content:  
 1. An adapter specifically used for pytorch yolo models: pytorch_yolo.  
 2. Non-maximum suppression method used in yolov4: diou_nms.  
