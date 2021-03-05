@@ -1,0 +1,52 @@
+models:
+
+  - name: scaled_yolo_v4
+    launchers:
+      - framework: dlsdk
+        tags:
+          - FP32
+        model: yolov4-p5.xml
+        weights: yolov4-p5.bin
+        adapter:
+          type: pytorch_yolo
+          anchors: 13,17,  31,25,  24,51, 61,45, 48,102,  119,96, 97,189, 217,184, 171,384, 324,451, 616,618, 800,800
+          num: 3
+          coords: 4
+          classes: 80
+          threshold: 0.001
+          anchor_masks: [[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11]]
+          raw_output: True
+          outputs:
+            - Conv_698
+            - Conv_714
+            - Conv_730
+    datasets:
+      - name: ms_coco_detection_80_class_without_background
+
+        preprocessing:
+          - type: resize
+            size: 896
+        postprocessing:
+          - type: resize_prediction_boxes
+          - type: filter
+            apply_to: prediction
+            min_confidence: 0.001
+            remove_filtered: true
+          - type: diou_nms
+            overlap: 0.5
+          - type: clip_boxes
+            apply_to: prediction
+        metrics:
+          - type: map
+            integral: 11point
+            ignore_difficult: true
+            presenter: print_scalar
+          - name: AP@0.5
+            type: coco_precision
+            max_detections: 100
+            threshold: 0.5
+          - name: AP@0.5:0.05:95
+            type: coco_precision
+            max_detections: 100
+            threshold: '0.5:0.05:0.95'
+
