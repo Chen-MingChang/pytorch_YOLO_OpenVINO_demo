@@ -195,11 +195,25 @@ sudo apt-get install python3 python3-dev python3-setuptools python3-pip
 python3 setup.py install
 ```
 
-###	Download datasets
+###	Modify
+Copy the contents of **tools/accuracy_checker** to accuracy checker tool path you installed before.  
+
+```
+cp -r tools/accuracy_checker /opt/intel/openvino_2021/deployment_tools/open_model_zoo/tools/
+```
+
+###	Download Datasets
 
 ```
 wget http://images.cocodataset.org/zips/val2017.zip  
 wget http://images.cocodataset.org/annotations/annotations_trainval2017.zip  
 unzip -d annotations_trainval2017/ annotations_trainval2017.zip    
 unzip -d annotations_trainval2017/annotations/ val2017.zip  
+```
+
+###	Run Accuracy Checker Tool 
+Same as before, take yolov5s as an example. Use the command below to run accuracy checker.  
+
+```
+accuracy_check -c tools/accuracy_checker/configs/accuracy-check-yolov5.yml -m . --definitions /opt/intel/openvino_2021/deployment_tools/open_model_zoo/tools/accuracy_checker/dataset_definitions.yml -s annotations_trainval2017/annotations/ -td CPU  
 ```
