@@ -187,9 +187,11 @@ python yolo__openvino_demo.py -m yolov5s.xml -i images/bus.jpg -at yolov5
 ##	OpenVINO Accuracy Checker Tool
 
 ###	Installation
-Follow the guide of [openvinotookit_open_model_zoo]<https://github.com/openvinotoolkit/open_model_zoo/tree/master/tools/accuracy_checker>.
+Follow the guide of [openvinotookit_open_model_zoo](https://github.com/openvinotoolkit/open_model_zoo/tree/master/tools/accuracy_checker).  
 
-1.	cd /opt/intel/openvino_2021/deployment_tools/open_model_zoo/tools/accuracy_checker   
-2.	sudo apt-get install python3 python3-dev python3-setuptools python3-pip  
-3.	python3 setup.py install  
+```
+cd /opt/intel/openvino_2021/deployment_tools/open_model_zoo/tools/accuracy_checker   
+sudo apt-get install python3 python3-dev python3-setuptools python3-pip  
+python3 setup.py install
+```
 
