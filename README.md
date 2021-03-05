@@ -184,3 +184,8 @@ python yolo__openvino_demo.py -m yolov5s.xml -i images/bus.jpg -at yolov5
 ```
 <img src="https://github.com/Chen-MingChang/pytorch_YOLO_OpenVINO_demo/blob/main/demo_result.png">
 
+##	OpenVINO Accuracy Checker Tool
+
+###	Installation
+https://docs.openvinotoolkit.org/2019_R2/_tools_accuracy_checker_README.html
+
