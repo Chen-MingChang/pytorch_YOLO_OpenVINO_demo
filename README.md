@@ -180,7 +180,7 @@ Options:
 Here we take yolov5s as an example, we can use the following command to run the demo.
   
 ```
-python yolo__openvino_demo.py -m yolov5s.xml -i images/bus.jpg -at yolov5
+python3 yolo__openvino_demo.py -m yolov5s.xml -i images/bus.jpg -at yolov5
 ```
 <img src="https://github.com/Chen-MingChang/pytorch_YOLO_OpenVINO_demo/blob/main/demo_result.png">
 
@@ -195,3 +195,11 @@ sudo apt-get install python3 python3-dev python3-setuptools python3-pip
 python3 setup.py install
 ```
 
+###	Download datasets
+
+```
+wget http://images.cocodataset.org/zips/val2017.zip  
+wget http://images.cocodataset.org/annotations/annotations_trainval2017.zip  
+unzip -d annotations_trainval2017/ annotations_trainval2017.zip    
+unzip -d annotations_trainval2017/annotations/ val2017.zip  
+```
