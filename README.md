@@ -215,7 +215,7 @@ $ unzip -d annotations_trainval2017/annotations/ val2017.zip
 Same as before, take yolov5s as an example. Use the command below to run accuracy checker.  
 
 ```
-$ accuracy_check -c tools/accuracy_checker/configs/accuracy-check-yolov5.yml -m . --definitions /opt/intel/openvino_2021/deployment_tools/open_model_zoo/tools/accuracy_checker/dataset_definitions.yml -s annotations_trainval2017/annotations/ -td CPU  
+$ accuracy_check -c configs/accuracy-check-yolov5.yml -m . --definitions /opt/intel/openvino_2021/deployment_tools/open_model_zoo/tools/accuracy_checker/dataset_definitions.yml -s annotations_trainval2017/annotations/ -td CPU  
 ```
 
 ##	References
