@@ -62,16 +62,16 @@ Intall mish-cuda if you want to convert Scaled-YOLOV4. (refer to https://github.
 $ git clone https://github.com/thomasbrandon/mish-cuda mc
 $ cd mc
 
- change all of name which is mish_cuda to mish_mish and build.
- 1. mc/src/mish_cuda -> mc/src/mish_mish
- 2. mc/csrc/mish_cuda.cpp -> mc/csrc/mish_mish.cpp
- 3. in mc/setup.py
-   3.1 line 5 -> 'csrc/mish_mish.cpp'
-   3.2 line 11 -> name='mish_mish'
-   3.3 line 20 -> 'mish_mish._C'
+  change all of name which is mish_cuda to mish_mish and build.
+  1. mc/src/mish_cuda -> mc/src/mish_mish
+  2. mc/csrc/mish_cuda.cpp -> mc/csrc/mish_mish.cpp
+  3. in mc/setup.py
+    3.1 line 5 -> 'csrc/mish_mish.cpp'
+    3.2 line 11 -> name='mish_mish'
+    3.3 line 20 -> 'mish_mish._C'
 
 $ python3 setup.py build
- rename mc/build/lib.xxx folder to mc/build/lib
+  rename mc/build/lib.xxx folder to mc/build/lib
 ```
 
 Next, edit **models/yolo.py** and **models/common.py** according to the model to be converted.  
