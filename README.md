@@ -32,7 +32,7 @@ There are three scaled models (p5, p6, p7) with different backbone.
 There are four tag in YOLOv5 repository so far. And YOLOv5 includes YOLOv5s, YOLOv5m, YOLOv5l and YOLOv5x due to different backbone. Here we use models from tag v4.0 for inference.  
 https://github.com/ultralytics/yolov5
 
-| Model | Test Size | weights | AP<sub>50</sub>
+| Model | Test Size | weights | AP<sub>50</sub><sub>OpenVINO Accuracy Checker Tool</sub>
 | :-- | :-: | :-: | :-: | 
 |  |  |  |  |
 | **YOLOv3** | 416 | [weights](https://pjreddie.com/media/files/yolov3.weights) | 60.23% |
