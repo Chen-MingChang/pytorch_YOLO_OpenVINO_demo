@@ -177,7 +177,7 @@ Options:
   --no_show             Optional. Don't show output
 ```
   
-Here we take yolov5s as an example, you can use the following command to run the demo.
+Here we take yolov5s as an example, we can use the following command to run the demo.
   
 ```
 python yolo__openvino_demo.py -m yolov5s.xml -i images/bus.jpg -at yolov5
