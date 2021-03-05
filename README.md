@@ -53,7 +53,7 @@ https://github.com/ultralytics/yolov5
 
 #### If YOLOV3: You can following https://github.com/zldrobit/onnx_tflite_yolov3 to convert model to onnx.  
 ```
-  Edited **detect.py** (optional).  
+  Edited detect.py (optional) to obtain the weight with higher accuracy.  
   line 48 'opset_version=9' -> 'opset_version=12'
   
 $ python3 detect.py --cfg cfg/yolov3.cfg --weights weights/yolov3.weights
