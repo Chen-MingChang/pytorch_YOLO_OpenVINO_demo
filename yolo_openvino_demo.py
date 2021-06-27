@@ -91,8 +91,7 @@ class YoloParams:
         else:
             self.num = 3 
             self.anchors = [10.0, 13.0, 16.0, 30.0, 33.0, 23.0, 30.0, 61.0, 62.0, 45.0, 59.0, 119.0, 116.0, 90.0, 156.0,
-                            198.0,
-                            373.0, 326.0]
+                            198.0, 373.0, 326.0]
 
     def log_params(self):
         params_to_print = {'classes': self.classes, 'num': self.num, 'coords': self.coords, 'anchors': self.anchors}
@@ -339,8 +338,6 @@ def main():
         else:
             request_id = cur_request_id
             in_frame = letterbox(frame, (w, h))
-
-        in_frame0 = in_frame
         # resize input_frame to network size
         in_frame = in_frame.transpose((2, 0, 1))  # Change data layout from HWC to CHW
         in_frame = in_frame.reshape((n, c, h, w))
