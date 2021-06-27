@@ -348,11 +348,11 @@ def main():
         # Start inference
         start_time = time()
         exec_net.start_async(request_id=request_id, inputs={input_blob: in_frame})
-        det_time = time() - start_time
 
         # Collecting object detection results
         objects = list()
         if exec_net.requests[cur_request_id].wait(-1) == 0:
+            det_time = time() - start_time
             output = exec_net.requests[cur_request_id].outputs
             start_time = time()
 
