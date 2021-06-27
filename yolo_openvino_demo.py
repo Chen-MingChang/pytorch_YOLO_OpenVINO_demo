@@ -374,6 +374,8 @@ def main():
             if objects[i]['confidence'] == 0:
                 continue
             for j in range(i + 1, len(objects)):
+                if objects[i]['class_id'] != objects[j]['class_id']: # Only compare bounding box with same class id
+                    continue
                 if intersection_over_union(objects[i], objects[j]) > args.iou_threshold:
                     objects[j]['confidence'] = 0
 
