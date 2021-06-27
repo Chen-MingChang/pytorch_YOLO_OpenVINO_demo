@@ -217,7 +217,7 @@ def parse_yolo_region(blob, resized_image_shape, original_im_shape, params, thre
             height = (2*height)**2 * params.anchors[idx * 6 + 2 * n + 1]
 
         class_id = np.argmax(class_probabilities * object_probability)
-        confidence = object_probability
+        confidence = class_probabilities[class_id] * object_probability
         objects.append(scale_bbox(x=x, y=y, height=height, width=width, class_id=class_id, confidence=confidence,
                                   im_h=orig_im_h, im_w=orig_im_w, resized_im_h=resized_image_h, resized_im_w=resized_image_w))
     return objects
