@@ -91,8 +91,7 @@ class YoloParams:
         else:
             self.num = 3 
             self.anchors = [10.0, 13.0, 16.0, 30.0, 33.0, 23.0, 30.0, 61.0, 62.0, 45.0, 59.0, 119.0, 116.0, 90.0, 156.0,
-                            198.0,
-                            373.0, 326.0]
+                            198.0, 373.0, 326.0]
 
     def log_params(self):
         params_to_print = {'classes': self.classes, 'num': self.num, 'coords': self.coords, 'anchors': self.anchors}
@@ -217,7 +216,7 @@ def parse_yolo_region(blob, resized_image_shape, original_im_shape, params, thre
             height = (2*height)**2 * params.anchors[idx * 6 + 2 * n + 1]
 
         class_id = np.argmax(class_probabilities * object_probability)
-        confidence = object_probability
+        confidence = class_probabilities[class_id] * object_probability
         objects.append(scale_bbox(x=x, y=y, height=height, width=width, class_id=class_id, confidence=confidence,
                                   im_h=orig_im_h, im_w=orig_im_w, resized_im_h=resized_image_h, resized_im_w=resized_image_w))
     return objects
@@ -339,8 +338,6 @@ def main():
         else:
             request_id = cur_request_id
             in_frame = letterbox(frame, (w, h))
-
-        in_frame0 = in_frame
         # resize input_frame to network size
         in_frame = in_frame.transpose((2, 0, 1))  # Change data layout from HWC to CHW
         in_frame = in_frame.reshape((n, c, h, w))
@@ -348,11 +345,11 @@ def main():
         # Start inference
         start_time = time()
         exec_net.start_async(request_id=request_id, inputs={input_blob: in_frame})
-        det_time = time() - start_time
 
         # Collecting object detection results
         objects = list()
         if exec_net.requests[cur_request_id].wait(-1) == 0:
+            det_time = time() - start_time
             output = exec_net.requests[cur_request_id].outputs
             start_time = time()
 
@@ -374,6 +371,8 @@ def main():
             if objects[i]['confidence'] == 0:
                 continue
             for j in range(i + 1, len(objects)):
+                if objects[i]['class_id'] != objects[j]['class_id']: # Only compare bounding box with same class id
+                    continue
                 if intersection_over_union(objects[i], objects[j]) > args.iou_threshold:
                     objects[j]['confidence'] = 0
 
